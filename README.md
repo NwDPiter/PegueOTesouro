@@ -4,7 +4,7 @@ Aceitei o desafio técnico do GTI e desenvolvi um jogo simples chamado **Pegue o
 
 Neste jogo de plataforma 2D, o objetivo é coletar **todos os baús** enquanto supera obstáculos e desafios.
 
-OBS: Para concluir a fase, passe pela bandeira após coletar os baús
+OBS: Para finalizar a fase, passe pela bandeira após coletar os baús
 
 Aqui está um exemplo de como ficou: 
 
