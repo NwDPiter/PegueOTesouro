@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://dj772gljlv0m8"]
+
+[ext_resource type="Script" uid="uid://bvxofsvq0xunu" path="res://scripts/Peixe.gd" id="1_os4cf"]
+[ext_resource type="Texture2D" uid="uid://cimj4mh1dyptr" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/01-Idle/Idle 01.png" id="2_u44ek"]
+[ext_resource type="Texture2D" uid="uid://lv82cnvq8y56" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 01.png" id="3_id6vj"]
+[ext_resource type="Texture2D" uid="uid://daxkh6e4imb44" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 02.png" id="4_5c1cq"]
+[ext_resource type="Texture2D" uid="uid://ch2gtp7ns7y1k" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 03.png" id="5_mxcre"]
+[ext_resource type="Texture2D" uid="uid://40rsev78fdcb" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 04.png" id="6_56jjn"]
+[ext_resource type="Texture2D" uid="uid://c3gjbr8hdwio4" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 05.png" id="7_v6enm"]
+[ext_resource type="Texture2D" uid="uid://c37lmhbln3ngx" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 06.png" id="8_0g3xl"]
+
+[sub_resource type="Animation" id="Animation_x3xfq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u44ek")]
+}
+
+[sub_resource type="Animation" id="Animation_ctwkv"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_id6vj"), ExtResource("4_5c1cq"), ExtResource("5_mxcre"), ExtResource("6_56jjn"), ExtResource("7_v6enm"), ExtResource("8_0g3xl")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gajc5"]
+_data = {
+&"RESET": SubResource("Animation_x3xfq"),
+&"run": SubResource("Animation_ctwkv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv4js"]
+size = Vector2(13, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwjkv"]
+size = Vector2(22, 22)
+
+[node name="Inimigo2" type="CharacterBody2D" groups=["inimigo"]]
+script = ExtResource("1_os4cf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u44ek")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_gajc5")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_gv4js")
+
+[node name="Ray" type="RayCast2D" parent="."]
+target_position = Vector2(0, 15)
+
+[node name="Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_gwjkv")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

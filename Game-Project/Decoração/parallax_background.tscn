@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctr5hivj0usw0"]
+
+[ext_resource type="Texture2D" uid="uid://c4gvgqwwq83qc" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/sky.png" id="1_hlmmu"]
+[ext_resource type="Texture2D" uid="uid://c80itp377uo61" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/sea.png" id="2_eiv8c"]
+[ext_resource type="Texture2D" uid="uid://cruwgkr6jem2r" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/Additional Water.png" id="3_ue7ra"]
+[ext_resource type="Texture2D" uid="uid://btcc6ykd70t85" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 01.png" id="4_iof8k"]
+[ext_resource type="Texture2D" uid="uid://dcph8bxrqolog" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 02.png" id="5_v4e1s"]
+[ext_resource type="Texture2D" uid="uid://d110yxmnjfy2t" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 03.png" id="6_biml0"]
+[ext_resource type="Texture2D" uid="uid://x83aj3w7ahqg" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 04.png" id="7_x3mcu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nensv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_iof8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v4e1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_biml0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x3mcu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(850, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(278.5, 229)
+scale = Vector2(7.90179, 1.50658)
+texture = ExtResource("1_hlmmu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(850, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(278.5, 468.375)
+scale = Vector2(7.90179, 2.52865)
+texture = ExtResource("2_eiv8c")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(850, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(278.5, 700.75)
+scale = Vector2(27.6563, 9.48438)
+texture = ExtResource("3_ue7ra")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(223.25, 576)
+scale = Vector2(1.97353, 5.5)
+sprite_frames = SubResource("SpriteFrames_nensv")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(1231, 577)
+scale = Vector2(1.97353, 5.5)
+sprite_frames = SubResource("SpriteFrames_nensv")
+autoplay = "default"

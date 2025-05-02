@@ -1,0 +1,90 @@
+[gd_scene load_steps=18 format=3 uid="uid://usu0gsuxhq8n"]
+
+[ext_resource type="Texture2D" uid="uid://mr75y7yeur3g" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 01.png" id="1_2onvp"]
+[ext_resource type="Texture2D" uid="uid://e5lnh5k75ok7" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 02.png" id="2_5bdtl"]
+[ext_resource type="Texture2D" uid="uid://0ceq8uxg32k8" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 03.png" id="3_cqu0p"]
+[ext_resource type="Texture2D" uid="uid://cwg0wsnrav4q2" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 04.png" id="4_anvls"]
+[ext_resource type="Texture2D" uid="uid://bj5iq26b6ladk" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 05.png" id="5_tkc7c"]
+[ext_resource type="Texture2D" uid="uid://yugfe6kh1xdk" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 06.png" id="6_qljhn"]
+[ext_resource type="Texture2D" uid="uid://bhy7rtn6bjkao" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 07.png" id="7_da0pj"]
+[ext_resource type="Texture2D" uid="uid://b7ap41ra5obay" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 08.png" id="8_agm86"]
+[ext_resource type="Texture2D" uid="uid://1f02hbxpujr4" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 09.png" id="9_hwct3"]
+[ext_resource type="Texture2D" uid="uid://bli3wcvhb31wb" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 10.png" id="10_gi1ki"]
+[ext_resource type="Script" uid="uid://d4n4fbpyrcxtd" path="res://Decoração/baú.gd" id="11_5bdtl"]
+[ext_resource type="Texture2D" uid="uid://bixydmuv11ro5" path="res://Treasure Hunters/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 01.png" id="12_cqu0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2onvp"]
+size = Vector2(14, 14)
+
+[sub_resource type="Animation" id="Animation_cqu0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_2onvp")]
+}
+
+[sub_resource type="Animation" id="Animation_5bdtl"]
+resource_name = "abrir"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_2onvp"), ExtResource("2_5bdtl"), ExtResource("3_cqu0p"), ExtResource("4_anvls"), ExtResource("5_tkc7c"), ExtResource("6_qljhn"), ExtResource("7_da0pj"), ExtResource("8_agm86"), ExtResource("9_hwct3"), ExtResource("10_gi1ki")]
+}
+
+[sub_resource type="Animation" id="Animation_anvls"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_cqu0p")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_anvls"]
+_data = {
+&"RESET": SubResource("Animation_cqu0p"),
+&"abrir": SubResource("Animation_5bdtl"),
+&"idle": SubResource("Animation_anvls")
+}
+
+[node name="Bau" type="Node2D" groups=["baus"]]
+script = ExtResource("11_5bdtl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_2onvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -2.75)
+scale = Vector2(1, 0.985714)
+texture = ExtResource("1_2onvp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_anvls")
+}
+autoplay = "idle"

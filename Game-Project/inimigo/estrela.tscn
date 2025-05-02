@@ -1,0 +1,69 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc87s05bicnbu"]
+
+[ext_resource type="Script" uid="uid://dneays46ne5ks" path="res://scripts/Estrela.gd" id="1_61gcx"]
+[ext_resource type="Texture2D" uid="uid://rigohax7fca2" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/01-Idle/Idle 05.png" id="2_josfx"]
+[ext_resource type="Texture2D" uid="uid://f0v2mswcjbjt" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/02-Run/Run 01.png" id="3_7o7r6"]
+[ext_resource type="Texture2D" uid="uid://bxugh32x4h8m7" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/02-Run/Run 02.png" id="4_end2n"]
+[ext_resource type="Texture2D" uid="uid://c3eosymiiming" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/02-Run/Run 03.png" id="5_xxrqc"]
+[ext_resource type="Texture2D" uid="uid://bs1dyfj44avmd" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/02-Run/Run 04.png" id="6_44bax"]
+[ext_resource type="Texture2D" uid="uid://ng1wq4qhnica" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/02-Run/Run 05.png" id="7_y1cl2"]
+[ext_resource type="Texture2D" uid="uid://c1pqnen8bh1nl" path="res://Treasure Hunters/Treasure Hunters/The Crusty Crew/Sprites/Pink Star/02-Run/Run 06.png" id="8_png3s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrlga"]
+size = Vector2(17, 19)
+
+[sub_resource type="Animation" id="Animation_3fkiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_josfx")]
+}
+
+[sub_resource type="Animation" id="Animation_ud6d2"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_7o7r6"), ExtResource("4_end2n"), ExtResource("5_xxrqc"), ExtResource("6_44bax"), ExtResource("7_y1cl2"), ExtResource("8_png3s"), ExtResource("2_josfx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3br6q"]
+_data = {
+&"RESET": SubResource("Animation_3fkiw"),
+&"run": SubResource("Animation_ud6d2")
+}
+
+[node name="inimigoEstrela" type="CharacterBody2D"]
+script = ExtResource("1_61gcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_mrlga")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_josfx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_3br6q")
+}
+
+[node name="RayChao" type="RayCast2D" parent="."]
+target_position = Vector2(0, 17)
