@@ -6,6 +6,6 @@ Neste jogo de plataforma2D, o objetivo é coletar o tesouro enquanto supera obst
 
 Aqui um exemplo de como ficou:
 
-![Gameplay do Pegue o Tesouro](caminho/para/seu-gif.gif)
+![Gameplay do Pegue o Tesouro](MyGame.gif)
 
 Confira o repositório do desafio [aqui](https://github.com/gtismedev/desafio-tecnico).
