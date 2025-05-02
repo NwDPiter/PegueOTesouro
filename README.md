@@ -2,7 +2,7 @@
 
 Aceitei o desafio técnico do GTI e desenvolvi um jogo simples chamado **Pegue o Tesouro**, usando a **Godot Engine 4.4.3**! 🚀  
 
-Neste jogo de plataforma 2D, o objetivo é coletar o tesouro enquanto supera obstáculos e desafios.  
+Neste jogo de plataforma 2D, o objetivo é coletar os tesouro enquanto supera obstáculos e desafios.  
 
 Aqui está um exemplo de como ficou: 
 
